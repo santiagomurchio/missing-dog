@@ -81,10 +81,11 @@ app.put('/raza/:id', (req, res) => {
             // return res.json({result});
             if(result && result.length === 1) {
                 let raza = result[0];
-                raza.nombre = body.nombre;
-                raza.descripcion = body.descripcion;
                 raza
-                    .update()
+                    .update({
+                        nombre: body.nombre,
+                        descripcion: body.descripcion
+                    })
                     .then(razaDB => {
                         return res.json({
                             ok: true,

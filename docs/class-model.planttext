@@ -1,0 +1,35 @@
+@startuml
+
+class Barrio {
+    - noombre: String
+    - descripción: String
+}
+
+class ZonaPerdida {
+    - descripcion: String
+}
+
+class ZonaVisto {
+    - descripcion: String
+}
+
+class Raza {
+    - nombre: String
+    - descripcion: String
+}
+
+class Mascota {
+    - nombre: String
+    - foto: imagen
+    - edad: integer
+    - encontrado: boolean    
+}
+
+Raza "1" -- "0..*" Mascota
+Mascota "0..*" -- "perdidoEn 1" Barrio
+(Mascota, Barrio) .. ZonaPerdida
+
+Mascota "0..*" -- "vistoEn 0..*" Barrio
+(Mascota, Barrio) .. ZonaVisto
+
+@enduml
